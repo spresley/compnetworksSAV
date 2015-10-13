@@ -1,3 +1,3 @@
 
-MCU_TARGET     = atmega32
-DEFS           = -DF_CPU=16000000
+MCU_TARGET     = atmega644p
+DEFS           = -DF_CPU=12000000
