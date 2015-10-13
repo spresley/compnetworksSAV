@@ -13,6 +13,7 @@ int main ( void )
 {
 	init_lcd();
 	set_orientation(East);
+	display_string("Loading...");
 
 	uint8_t *bufptr;
 	uint8_t i;
@@ -20,16 +21,13 @@ int main ( void )
 
 	uint16_t ticker = 0;
 	
-	#ifdef LED_PORT
-		LED_DDR |= _BV(LED_BIT); //enable LED if any
-	#endif
 
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	
 	sei();           //interrupts on
 
-	display_string("\r\n" "RFM12 Pingpong test\r\n");
+	display_string("RFM12 Pingpong test\r\n");
 
 	while (42) //while the universe and everything
 	{
