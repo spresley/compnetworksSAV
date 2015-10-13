@@ -1,0 +1,274 @@
+#include <avr/io.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+#include "tone.h"
+#include "keypad.h"
+#include "tft.h"
+#include "rfm12.h"
+
+#define SIZE_H 320
+#define SIZE_W 240
+/*void keypad::init(void)
+{
+	DDRD = 0xF0;
+	PORTD |= 0x0F;
+}*/
+#define FREQ 262
+uint8_t count = 0;
+extern tft_t tft;
+uint8_t encrypt(uint8_t var, int key_no);
+
+ISR(TIMER1_COMPA_vect)
+{
+	count ++;
+}
+void keypad::init(void)
+{
+	DDRD = 0x00;
+	PORTD = 0xF0;
+}
+
+void keypad::init_timer(void)
+{
+// Timer1 initialise (Using timer1 to be more precise)
+	TCCR1A = 0;		// No pin output, CTC mode (0 -> OCR1A)
+	TCCR1B = _BV(WGM12) | _BV(CS12);	// CTC, clk/256 prescaler
+	TCCR1C = 0;		// No force output
+	OCR1A = 46874;		// 12M / 256 - 1 = 46874
+	TIMSK1 = _BV(OCIE1A);	// Interrupt compare A match enable
+
+	// Global interrupt enable
+	sei();
+}	
+
+static const char transform[10][5] = {	//the detail of the key
+	{' ', '0', '!', 'L', '+'},
+	{',', '.', '1', '-', '*'},
+	{'a', 'b', 'c', '2', 'A'},
+	{'d', 'e', 'f', '3', 'B'},
+	{'g', 'h', 'i', '4', 'C'},
+	{'j', 'k', 'l', '5', 'D'},
+	{'m', 'n', 'o', '6', 'E'},
+	{'p', 'q', 'r', 's', '7'},
+	{'t', 'u', 'v', '8', 'O'},
+	{'w', 'x', 'y', 'z', '9'},
+};
+
+static const char rec_mes[4][35] = {	//pre-recorded messages
+	"help, need a medic",
+	"get to the chopper",
+	"the robots are coming, retreat",
+	"i see you looking at my ass"
+};
+
+uint8_t keypad::scan(void)
+{
+	DDRD = 0x01;
+	for (uint8_t i = 0; i != 4; i++) {	//the row
+		_delay_ms(1);
+		if (~PIND & 0xF0)
+			for (uint8_t mask = 0x10, idx = 0; idx < 4; \	//scan column
+				idx++, mask <<= 1)
+				if (~PIND & mask)
+					return i * 4 + idx;
+		if (i != 3)
+			DDRD <<= 1;
+	}
+	return -1;
+}
+
+void keypad::num(uint8_t i, int a,  uint16_t *p, char *str)	//if press the key not only one times
+{
+	uint8_t j = 0;	//times press the button
+	putchar(transform[i][j]);
+	_delay_ms(50);
+	count = 0;
+	do{
+		
+		while(keypad::scan() != (uint8_t)-1);
+		_delay_ms(50);
+		while(keypad::scan() == (uint8_t)-1)
+		{
+		//	printf("%u", count);
+			if(count > 1)
+				goto goon;
+		}
+		count = 0;
+		if(keypad::scan() + a == i)
+		{
+			tft.setX(tft.x() - FONT_WIDTH * tft.zoom());
+			j++;
+			putchar(transform[i][j%5]);
+		//	printf("%u", keypad::scan());
+		}
+	//	printf("%d", (int)keypad::scan());
+	}while((keypad::scan() == -1) || (keypad::scan() + a == i));
+goon:	str[*p] = transform[i][j%5];
+	uint32_t screen_p[2];
+	screen_p[0] = tft.x();
+	screen_p[1] = tft.y();
+	*p = *p + 1;
+	tft.setXY(24, 224);
+	//printf("x = %lu, y = %lu", screen_p[0], screen_p[1]);
+	printf("%u letters left.",(100 - *p));
+	tft.setXY(screen_p[0], screen_p[1]);
+}
+
+
+void keypad::send(char *str)
+{
+	PORTB |= 0x01;
+	tft.clean();
+	tft.setZoom(2);
+	puts("the message is sent");
+	puts("the message is: ");
+	puts(str);
+	uint8_t tem =strlen(str);		//get the length of the str
+	uint8_t *n_str = (uint8_t *)str;	//get the pointer of the str
+	//printf("%u", tem);
+	//for(uint16_t i = 0; i < tem; i++)
+	//{
+	//	printf("%d", sizeof(str));
+	//	printf("%u", n_str[i]);
+	//}
+
+	/**************************************************************************************
+								encryption
+	***************************************************************************************/
+	for(int i = 0; i < tem; i++) {
+		*(n_str+i) = encrypt(*(n_str+i), i);
+	}
+	/**************************************************************************************/	
+	//put(n_str);
+	
+	rfm12_tx (tem, 0, n_str);		//prepare to send the message
+	rfm12_tick();				//sync, then send the message
+	//while((SPSR & _BV(SPIF)) == 0);
+	//PORTB &= 0xFE;
+	puts(" ");
+	puts("press E to go back");
+	
+
+}
+
+void keypad::del(char *str, uint16_t *p)
+{
+//	printf("%u", *p);
+	if (*p > 0)
+	{
+		uint8_t tem = (uint8_t)(SIZE_H / (FONT_WIDTH * tft.zoom()));
+		if(((*p) % tem) != 0)					//if in the same line
+		{
+			tft.setX(tft.x() - FONT_WIDTH * tft.zoom());	//set the position just before the letter
+			printf(" ");					//then printf one space 
+			tft.setX(tft.x() - FONT_WIDTH * tft.zoom());	//set the position back
+			uint32_t screen_p[2];				//save the position
+			screen_p[0] = tft.x();
+			screen_p[1] = tft.y();
+			str[*p] = '\0';					//delete the last letter in the string
+			*p = *p - 1;
+			tft.setXY(24, 224);				//set the position to the bottom of the screeen
+			//printf("x = %lu, y = %lu", screen_p[0], screen_p[1]);
+			printf("%u letters left.", (100 - *p));
+			tft.setXY(screen_p[0], screen_p[1]);
+			while(keypad::scan() != (uint8_t)-1);
+			_delay_ms(50);
+		}
+		else							//if not in the same line
+		{
+			tft.setXY(FONT_WIDTH * tem * tft.zoom(), tft.y() - FONT_HEIGHT * tft.zoom());								//set the position to the last line
+			tft.setX(tft.x() - FONT_WIDTH * tft.zoom());	//set x to the last letter	
+			printf(" ");
+			tft.setXY(FONT_WIDTH * tem * tft.zoom(), tft.y() - FONT_HEIGHT * tft.zoom());
+			uint32_t screen_p[2];
+			screen_p[0] = tft.x();
+			screen_p[1] = tft.y();
+			str[*p] = '\0';
+			*p = *p - 1;
+			tft.setXY(24, 224);
+			//printf("x = %lu, y = %lu", screen_p[0], screen_p[1]);
+			printf("%u letters left.", (100 - *p));
+			tft.setXY(screen_p[0] - (FONT_WIDTH * tft.zoom()), screen_p[1]);
+			while(keypad::scan() != (uint8_t)-1);
+			_delay_ms(50);
+		}
+	}
+	else
+	{
+		str[0] = '\0';
+	}
+}
+
+void keypad::exit()
+{
+	return;
+}
+
+void keypad::pre_rec(char *str, uint16_t *p)	//just change the letter into string
+{
+	uint8_t j = 0;	//times press the button
+	uint16_t orgi_p[2] = {tft.x(), tft.y()};
+	printf("%s", rec_mes[j%4]);
+//	strcpy(str, rec_mes[0]);
+
+	_delay_ms(50);
+	count = 0;
+	do{
+		
+		while(keypad::scan() != (uint8_t)-1);
+		_delay_ms(50);
+		while(keypad::scan() == (uint8_t)-1)
+		{
+		//	printf("%u", count);
+			if(count > 1)
+				goto goon;
+		}
+		count = 0;
+		if(keypad::scan() == 12)
+		{
+
+			tft.setXY(orgi_p[0], orgi_p[1]);
+			j++;
+			//tft.setXY(orgi_p[0], orgi_p[1]);
+			printf("%s", rec_mes[j%4]);
+		}
+	}while((keypad::scan() == -1) || (keypad::scan() == 12));
+goon:	strcpy(str + *p, rec_mes[j%4]);
+	uint32_t screen_p[2];
+	screen_p[0] = tft.x();
+	screen_p[1] = tft.y();
+	*p = strlen(str);
+	tft.setXY(24, 224);
+	//printf("x = %lu, y = %lu", screen_p[0], screen_p[1]);
+	printf("%u letters left.",(100 - *p));
+	tft.setXY(screen_p[0], screen_p[1]);
+}	
+void keypad::buzzer(void)
+{
+	while(keypad::scan() == 14)
+		tone(262);
+}
+
+void keypad::talk(char *str, uint16_t *p)	//push to talk flag
+{
+	while(keypad::scan() == 15)
+		PORTA |= _BV(1);
+	_delay_ms(500);
+		PORTA &= ~_BV(1);
+
+}
+
+uint8_t encrypt(uint8_t var, int key_no) 
+{
+	uint8_t key[3] = {0x36, 0x5A, 0xEB};
+	return var ^ key[key_no % 3];
+}
+
+
+
+//tft.setX(tft.x() - FONT_WIDTH * tft.zoom());
+//
+

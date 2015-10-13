@@ -1,0 +1,7 @@
+#ifndef ENCRYPTION_H
+#define ENCRYPTION_H
+uint8_t encrypt_decrypt(uint8_t var, int key_no) {
+	uint8_t key[3] = {0x36, 0x5A, 0xEB};
+	return var ^ key[key_no % 3];
+}
+#endif
