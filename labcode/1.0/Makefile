@@ -25,7 +25,7 @@ LIBS           =
 
 CC             = avr-gcc
 SRC = $(OBJ:%.o=%.c)
-DEPENDFILE = .depend
+#DEPENDFILE = .depend
 
 # Override is only needed by avr-lib build system.
 
@@ -45,9 +45,11 @@ clean:
 	rm -rf *.lst *.map $(EXTRA_CLEAN_FILES)
 
 dep: $(SRC)
-	$(CC) -mmcu=$(MCU_TARGET) $(DEFS) -MM $(SRC) > $(DEPENDFILE)
+	$(CC) -mmcu=$(MCU_TARGET) $(DEFS) -MM $(SRC)
 
--include $(DEPENDFILE)
+# > $(DEPENDFILE)
+
+#-include $(DEPENDFILE)
 
 size: image.elf
 	avr-nm -S --size-sort image.elf

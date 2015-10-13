@@ -37,12 +37,10 @@
  *                                                    *
  ******************************************************/
  
-#ifndef _RFM12_H
 #define _RFM12_H
 
-#ifdef __PLATFORM_LINUX__
+
 #include <stdint.h>
-#endif
 
 //this was missing, but is very important to set the config options for structs and such
 #include "include/rfm12_core.h"
@@ -296,5 +294,3 @@ extern rfm12_control_t ctrl;
 */
 #include "include/rfm12_extra.h"
 #include "include/rfm12_livectrl.h"
-
-#endif /* _RFM12_H */

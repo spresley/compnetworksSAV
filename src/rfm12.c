@@ -34,15 +34,14 @@
 /************************
  * standard includes
 */
-#ifdef __PLATFORM_AVR__
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
-#endif
 
 #include <string.h>
 
-
+#include <stdint.h>
 
 /************************
  * library internal includes
@@ -51,11 +50,6 @@
 #include "include/rfm12_hw.h"
 #include "include/rfm12_core.h"
 #include "rfm12.h"
-
-//for uart debugging
-#if RFM12_UART_DEBUG
-	#include "../examples/uart_lib/uart.h"
-#endif
 
 #if RFM12_USE_RX_CALLBACK
 	volatile static (*rfm12_rx_callback_func)(uint8_t, uint8_t *) = (void *)0x0000;
