@@ -16,6 +16,6 @@ int main()
 {
 	init_lcd();
 	set_orientation(East);
-	display_string("Hello Nath");
+	display_string("Hello Nathan");
 	return 0;
 }
