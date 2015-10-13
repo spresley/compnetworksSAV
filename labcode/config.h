@@ -111,7 +111,7 @@
 #define RFM12_INT_VECT (INT1_vect)
 
 //the interrupt mask register
-#define RFM12_INT_MSK GICR
+#define RFM12_INT_MSK EIMSK
 
 //the interrupt bit in the mask register
 #define RFM12_INT_BIT (INT1)
