@@ -1,7 +1,7 @@
 UART_LIB_DIR   = ../uart_lib
 
 PRG            = image
-OBJ            = pingpong.o rfm12.o $(UART_LIB_DIR)/uart.o
+OBJ            = 1.0.o rfm12.o $(UART_LIB_DIR)/uart.o
 
 include ../make_config
 
