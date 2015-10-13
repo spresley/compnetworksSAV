@@ -29,7 +29,7 @@ SRC = $(OBJ:%.o=%.c)
 
 # Override is only needed by avr-lib build system.
 
-override CFLAGS        =  -g -Wall $(OPTIMIZE) -fno-jump-tables -mmcu=$(MCU_TARGET) $(DEFS)
+override CFLAGS        =  -g -Wall $(OPTIMIZE) -fno-jump-tables -mmcu=$(MCU_TARGET) -D __PLATFORM_AVR_ $(DEFS)
 override LDFLAGS       = -Wl,-Map,$(PRG).map
 
 OBJCOPY        = avr-objcopy
@@ -45,7 +45,7 @@ clean:
 	rm -rf *.lst *.map $(EXTRA_CLEAN_FILES)
 
 dep: $(SRC)
-	$(CC) -mmcu=$(MCU_TARGET) $(DEFS) -MM $(SRC)
+	$(CC) -mmcu=$(MCU_TARGET) -D __PLATFORM_AVR_ $(DEFS) -MM $(SRC)
 
 # > $(DEPENDFILE)
 

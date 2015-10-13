@@ -125,7 +125,7 @@
 */
 
 #define RFM12_CMD_DATARATE 0xC600
-#define RFM12_DATARATE_CS 0x80
+#define RATE_CS 0x80
 //calculate setting for datarates >= 2700 Baud
 #define RFM12_DATARATE_CALC_HIGH(d) ((uint8_t)((10000000.0/29.0/d)-0.5))
 //calculate setting for datarates < 2700 Baud

@@ -35,6 +35,9 @@
  * standard includes
 */
 
+#define __PLATFORM_AVR__
+
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
