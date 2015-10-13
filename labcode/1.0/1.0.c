@@ -2,12 +2,18 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <string.h>
+#include "avrlcd.h"
+#include "font.c"
+#include "ili934x.c"
+#include "lcd.c"
 
 #include "rfm12.h"
-#include "../uart_lib/uart.h"
 
 int main ( void )
 {
+	init_lcd();
+	set_orientation(East);
+
 	uint8_t *bufptr;
 	uint8_t i;
 	uint8_t tv[] = "foobar";
@@ -18,14 +24,12 @@ int main ( void )
 		LED_DDR |= _BV(LED_BIT); //enable LED if any
 	#endif
 
-	uart_init();
-
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	
 	sei();           //interrupts on
 
-	uart_putstr ("\r\n" "RFM12 Pingpong test\r\n");
+	display_string("\r\n" "RFM12 Pingpong test\r\n");
 
 	while (42) //while the universe and everything
 	{
@@ -38,17 +42,17 @@ int main ( void )
 				LED_PORT ^= _BV(LED_BIT);
 			#endif
 
-			uart_putstr ("new packet: \"");
+			display_string("new packet: \"");
 
 			bufptr = rfm12_rx_buffer(); //get the address of the current rx buffer
 
 			// dump buffer contents to uart			
 			for (i=0;i<rfm12_rx_len();i++)
 			{
-				uart_putc ( bufptr[i] );
+				display_string( bufptr[i] );
 			}
 			
-			uart_putstr ("\"\r\n");
+			display_string("\"\r\n");
 			
 			// tell the implementation that the buffer
 			// can be reused for the next data.
@@ -59,7 +63,7 @@ int main ( void )
 		ticker ++;
 		if(ticker == 3000){
 			ticker = 0;
-			uart_putstr (".\r\n");
+			display_string(".\r\n");
 			rfm12_tx (sizeof(tv), 0, tv);
 		}
 
