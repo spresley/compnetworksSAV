@@ -126,7 +126,7 @@
 #define RFM12_INT_BIT (INT1)
 
 //the interrupt flag register
-#define RFM12_INT_FLAG GIFR
+#define RFM12_INT_FLAG EIFR
 
 //the interrupt bit in the flag register
 #define RFM12_FLAG_BIT (INTF1)
