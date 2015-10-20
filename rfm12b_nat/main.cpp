@@ -1,5 +1,6 @@
 #define CALLSIGN 'N'
 #define STOPBIT '#'
+#define MESSAGELENGTH 30
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -38,7 +39,7 @@ int main(void)
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
-	char tv[10];
+	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
 	while(1)
@@ -56,11 +57,8 @@ int main(void)
 			//-----------BEGIN NATHAN CODE-------------//
 			//detect the callsign of the incoming packet
 			uint8_t rx_callsign = bufptr[0];
+			uint8_t rx_stopbit = bufptr[rfm12_rx_len()-1];
 
-			//store the message of the incoming packet
-
-			//detect the stop bit of the incoming message
-			uint8_t rx_stopbit = bufptr[9];
 			if ((rx_stopbit == STOPBIT) && (rx_callsign == CALLSIGN))
 			{
 				for (uint8_t i=1;i<(rfm12_rx_len()-1);i++)
@@ -85,21 +83,20 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"DNat2Dom!#");
-						//puts(tv);
+						strcpy (tv,"DThis is an essay for Dominic Maskell");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"SNat2Sam!#");
-						//puts(tv);
+						strcpy (tv,"SHi Sam it's Sam");
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HNat2Huw!#");
-						//puts(tv);
+						strcpy (tv,"HHuw haha");
 						count = 0;
 						break;
 				}
+
+				tv[MESSAGELENGTH-1] = STOPBIT;
 
 				rfm12_tx(sizeof(tv), 0, (uint8_t*)tv);	
 			//	}

@@ -83,11 +83,7 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-<<<<<<< HEAD
 						strcpy (tv,"NHiNath");
-=======
-						strcpy (tv,"NHi Ruttley#");
->>>>>>> origin/master
 						count++;
 						break;
 					case 1:
