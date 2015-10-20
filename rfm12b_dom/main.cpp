@@ -60,7 +60,7 @@ int main(void)
 			//store the message of the incoming packet
 			for (uint8_t i=1;i<(rfm12_rx_len()-2);i++)
 			{
-				uint8_t rx_message[8] =bufptr[i];
+				putchar(bufptr[i]);
 			}
 
 			//detect the stop bit of the incoming message
