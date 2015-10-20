@@ -85,7 +85,7 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NHi Nath!#");
+						strcpy (tv,"NHi Ruttley#");
 						count++;
 						break;
 					case 1:
