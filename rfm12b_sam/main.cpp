@@ -42,13 +42,14 @@ int main(void)
 	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
-	for (int i = 0; i < MESSAGELENGTH; i++)
-	{
-		tv[i]=(' ');
-	}
-
+	
 	while(1)
 	{
+		for (int i = 0; i < MESSAGELENGTH; i++)
+		{
+			tv[i]=(' ');
+		}
+
 		if (rfm12_rx_status() == STATUS_COMPLETE)
 		{
 			bufptr = rfm12_rx_buffer(); //get the address of the current rx buffer
@@ -70,10 +71,11 @@ int main(void)
 				{
 					putchar(bufptr[i]);
 				}
+				puts("");
 			}
 			
 			//------------END NATHAN CODE------------//
-			puts("");
+			
 
 				// tell the implementation that the buffer
 				// can be reused for the next data.
@@ -83,13 +85,13 @@ int main(void)
 				
 				
 	
-					puts(".");
+				
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NHi Nathan R       ");
+						strcpy (tv,"NHi Nathan R");
 						count++;
 						break;
 					case 1:
