@@ -1,5 +1,5 @@
-#define CALLSIGN D
-#define STOPBIT #
+#define CALLSIGN 'D'
+#define STOPBIT '#'
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -58,13 +58,16 @@ int main(void)
 			uint8_t rx_callsign = bufptr[0];
 
 			//store the message of the incoming packet
-			for (uint8_t i=1;i<(rfm12_rx_len()-2);i++)
-			{
-				putchar(bufptr[i]);
-			}
 
 			//detect the stop bit of the incoming message
 			uint8_t rx_stopbit = bufptr[9];
+			if ((rx_stopbit == STOPBIT) && (rx_callsign == CALLSIGN))
+			{
+				for (uint8_t i=1;i<(rfm12_rx_len()-1);i++)
+				{
+					putchar(bufptr[i]);
+				}
+			}
 			
 			//------------END NATHAN CODE------------//
 
