@@ -74,10 +74,7 @@ int main(void)
 				rfm12_rx_clear();
 				//_delay_ms(1000);
 			}
-				
-				
-	
-					puts(".");
+
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)

@@ -1,6 +1,6 @@
 #define CALLSIGN 'S'
 #define STOPBIT '#'
-#define MESSAGELENGTH 10
+#define MESSAGELENGTH 50
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -75,19 +75,16 @@ int main(void)
 				//_delay_ms(1000);
 			}
 				
-				
-	
-					puts(".");
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NHiNath");
+						strcpy (tv,"NNathan it's Dom");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"DHiDom");
+						strcpy (tv,"DDominic Maskell, you're the greatest man I know");
 						count++;
 						break;
 					case 2:
