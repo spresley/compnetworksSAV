@@ -54,6 +54,11 @@ int main(void)
 		{
 			bufptr = rfm12_rx_buffer(); //get the address of the current rx buffer
 
+			for (int i = 1; i < rfm12_rx_len()-1; i++)
+			{
+				bufptr[i]=bufptr[i] + 1;
+			}
+
 			// dump buffer contents to uart			
 			/*for (uint8_t i=0;i<rfm12_rx_len();i++)
 			{
@@ -102,6 +107,11 @@ int main(void)
 						strcpy (tv,"HHHahahahah Huw");
 						count = 0;
 						break;
+				}
+
+				for (int i = 1; i < MESSAGELENGTH - 1; i++)
+				{
+					tv[i]=tv[i] - 1;
 				}
 
 				tv[MESSAGELENGTH-1] = STOPBIT;
