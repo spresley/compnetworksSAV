@@ -42,6 +42,8 @@ int main(void)
 	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
+
+
 	while(1)
 	{
 		if (rfm12_rx_status() == STATUS_COMPLETE)
@@ -84,11 +86,11 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NHiNathanR");
+						strcpy (tv,"NHi Nathan R       ");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"DHiDominic");
+						strcpy (tv,"DHi Dominic");
 						count++;
 						break;
 					case 2:
