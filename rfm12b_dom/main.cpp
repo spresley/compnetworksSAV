@@ -1,6 +1,6 @@
 #define CALLSIGN 'D'
 #define STOPBIT '#'
-#define MESSAGELENGTH 20
+#define MESSAGELENGTH 30
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -65,6 +65,7 @@ int main(void)
 				{
 					putchar(bufptr[i]);
 				}
+				puts("");
 			}
 			
 			//------------END NATHAN CODE------------//
@@ -77,13 +78,12 @@ int main(void)
 				
 				
 	
-					puts(".");
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NNathan it's Dom");
+						strcpy (tv,"NNathan it's Dom Maskell from the University of Southampton");
 						count++;
 						break;
 					case 1:
@@ -91,7 +91,7 @@ int main(void)
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HHuw haha");
+						strcpy (tv,"HHi Huw it's Dom");
 						count = 0;
 						break;
 				}
