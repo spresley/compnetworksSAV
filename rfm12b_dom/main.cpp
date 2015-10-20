@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdio.h>
+#include <string.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "tft.h"
@@ -34,7 +35,8 @@ int main(void)
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
-	uint8_t tv[] = "I'm Dom";
+	uint8_t tv[10] = "Connecting";
+	uint8_t count = 0;
 	sei();           //interrupts on
 	while(1)
 	{
@@ -59,6 +61,21 @@ int main(void)
 					puts(".");
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
+				switch count
+				{
+					case 0:
+						tv[8] = 
+						count++;
+						break;
+					case 1:
+
+						break;
+					case 2:
+
+						count = 0;
+						break;
+				}
+
 				rfm12_tx(sizeof(tv), 0, tv);	
 			//	}
 				//rfm12 needs to be called from your main loop periodically.
