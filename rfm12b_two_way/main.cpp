@@ -34,7 +34,7 @@ int main(void)
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
-	uint8_t tv[] = "hello nath";
+	uint8_t tv[] = "I'm Dom";
 	sei();           //interrupts on
 	while(1)
 	{
@@ -71,7 +71,7 @@ int main(void)
 			}
 			_delay_ms(500);	//small delay so loop doesn't run as fast
 			
-		}
+	}
 }
 
 void init_sys(void)

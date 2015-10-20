@@ -338,95 +338,94 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini0)
                 0x00001878                _etext = .
 
-.data           0x00800100       0xe4 load address 0x00001878
+.data           0x00800100       0xe0 load address 0x00001878
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm644p.o
- .data          0x00800100       0x8a main.o
- .data          0x0080018a       0x49 rfm12.o
-                0x0080018a                livectrl_cmds
- .data          0x008001d3        0x8 tft-cpp/ascii.o
-                0x008001d3                fonts
- .data          0x008001db        0x2 tft-cpp/tft.o
-                0x008001db                tft::font
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fdevopen.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fputc.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(puts.o)
- .data          0x008001dd        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(calloc.o)
- .data          0x008001dd        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
-                0x008001df                __malloc_heap_start
-                0x008001e1                __malloc_heap_end
-                0x008001dd                __malloc_margin
- .data          0x008001e3        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .data          0x00800100       0x87 main.o
+ .data          0x00800187       0x49 rfm12.o
+                0x00800187                livectrl_cmds
+ .data          0x008001d0        0x8 tft-cpp/ascii.o
+                0x008001d0                fonts
+ .data          0x008001d8        0x2 tft-cpp/tft.o
+                0x008001d8                tft::font
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fdevopen.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fputc.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(puts.o)
+ .data          0x008001da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(calloc.o)
+ .data          0x008001da        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
+                0x008001dc                __malloc_heap_start
+                0x008001de                __malloc_heap_end
+                0x008001da                __malloc_margin
+ .data          0x008001e0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x008001e4                . = ALIGN (0x2)
- *fill*         0x008001e3        0x1 00
-                0x008001e4                _edata = .
-                0x008001e4                PROVIDE (__data_end, .)
+                0x008001e0                . = ALIGN (0x2)
+                0x008001e0                _edata = .
+                0x008001e0                PROVIDE (__data_end, .)
 
-.bss            0x008001e4       0xfa
-                0x008001e4                PROVIDE (__bss_start, .)
+.bss            0x008001e0       0xfa
+                0x008001e0                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x008001e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm644p.o
- .bss           0x008001e4       0x68 main.o
-                0x008001e4                bufptr
-                0x0080024a                p
-                0x008001e6                str
- .bss           0x0080024c       0x76 rfm12.o
-                0x008002b3                ctrl
-                0x0080026f                rf_rx_buffers
-                0x0080024c                rf_tx_buffer
- .bss           0x008002c2        0x0 tft-cpp/ascii.o
- .bss           0x008002c2       0x12 tft-cpp/tft.o
-                0x008002c5                tft::x
-                0x008002cf                tft::background
-                0x008002c7                tft::y
-                0x008002c3                tft::orient
-                0x008002c4                tft::tabSize
-                0x008002c2                tft::zoom
-                0x008002c9                tft::width
-                0x008002cd                tft::foreground
-                0x008002cb                tft::height
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fdevopen.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fputc.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(puts.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(calloc.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
- .bss           0x008002d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .bss           0x008001e0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm644p.o
+ .bss           0x008001e0       0x68 main.o
+                0x008001e0                bufptr
+                0x00800246                p
+                0x008001e2                str
+ .bss           0x00800248       0x76 rfm12.o
+                0x008002af                ctrl
+                0x0080026b                rf_rx_buffers
+                0x00800248                rf_tx_buffer
+ .bss           0x008002be        0x0 tft-cpp/ascii.o
+ .bss           0x008002be       0x12 tft-cpp/tft.o
+                0x008002c1                tft::x
+                0x008002cb                tft::background
+                0x008002c3                tft::y
+                0x008002bf                tft::orient
+                0x008002c0                tft::tabSize
+                0x008002be                tft::zoom
+                0x008002c5                tft::width
+                0x008002c9                tft::foreground
+                0x008002c7                tft::height
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fdevopen.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(fputc.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(puts.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(calloc.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
+ .bss           0x008002d0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x008002d4        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
-                0x008002d4                __iob
- COMMON         0x008002da        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
-                0x008002da                __brkval
-                0x008002dc                __flp
-                0x008002de                PROVIDE (__bss_end, .)
+ COMMON         0x008002d0        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(iob.o)
+                0x008002d0                __iob
+ COMMON         0x008002d6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(malloc.o)
+                0x008002d6                __brkval
+                0x008002d8                __flp
+                0x008002da                PROVIDE (__bss_end, .)
                 0x00001878                __data_load_start = LOADADDR (.data)
-                0x0000195c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001958                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008002de        0x0
-                0x008002de                PROVIDE (__noinit_start, .)
+.noinit         0x008002da        0x0
+                0x008002da                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008002de                PROVIDE (__noinit_end, .)
-                0x008002de                _end = .
-                0x008002de                PROVIDE (__heap_start, .)
+                0x008002da                PROVIDE (__noinit_end, .)
+                0x008002da                _end = .
+                0x008002da                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
