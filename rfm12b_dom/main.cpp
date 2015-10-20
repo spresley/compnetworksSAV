@@ -48,16 +48,31 @@ int main(void)
 			bufptr = rfm12_rx_buffer(); //get the address of the current rx buffer
 
 			// dump buffer contents to uart			
-			for (uint8_t i=0;i<rfm12_rx_len();i++)
+			/*for (uint8_t i=0;i<rfm12_rx_len();i++)
 			{
 				putchar(bufptr[i]);
+			}*/
+			
+			//-----------BEGIN NATHAN CODE-------------//
+			//detect the callsign of the incoming packet
+			uint8_t rx_callsign = bufptr[0];
+
+			//store the message of the incoming packet
+			for (uint8_t i=1;i<(rfm12_rx_len()-2);i++)
+			{
+				uint8_t rx_message[8] =bufptr[i];
 			}
-				
+
+			//detect the stop bit of the incoming message
+			uint8_t rx_stopbit = bufptr[9];
+			
+			//------------END NATHAN CODE------------//
+
 				// tell the implementation that the buffer
 				// can be reused for the next data.
 				rfm12_rx_clear();
 				//_delay_ms(1000);
-		}
+			}
 				
 				
 	
