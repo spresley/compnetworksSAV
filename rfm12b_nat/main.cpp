@@ -1,6 +1,6 @@
 #define CALLSIGN 'N'
 #define STOPBIT '#'
-#define MESSAGELENGTH 30
+#define MESSAGELENGTH 20
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -65,6 +65,7 @@ int main(void)
 				{
 					putchar(bufptr[i]);
 				}
+				puts("");
 			}
 			
 			//------------END NATHAN CODE------------//
@@ -75,22 +76,22 @@ int main(void)
 				//_delay_ms(1000);
 			}
 
-					puts(" ");
+					//puts(" ");
 
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"DA message to Dom from Nathan");
+						strcpy (tv,"Dto dom from nathan!!");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"SA message to Sam from Nathan");
+						strcpy (tv,"Sto sam from nathan!!");
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HA message to Huw from Nathan");
+						strcpy (tv,"Hto huw from nathan!!");
 						count = 0;
 						break;
 				}
