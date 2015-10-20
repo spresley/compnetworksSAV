@@ -1,34 +1,42 @@
 tft-cpp/ascii.o: tft-cpp/ascii.c \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/pgmspace.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/inttypes.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/stdint.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/include/stddef.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/io.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/sfr_defs.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/iom644.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/iomxx4.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/portpins.h \
-  /usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/version.h \
-  tft-cpp/ascii.h
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/inttypes.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/stdint.h \
+  c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/iom644p.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/iomxx4.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/portpins.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/common.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/version.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h tft-cpp/ascii.h
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/pgmspace.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/inttypes.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/inttypes.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/stdint.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/stdint.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/include/stddef.h:
+c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/io.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/sfr_defs.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/iom644.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/iom644p.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/iomxx4.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/iomxx4.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/portpins.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/portpins.h:
 
-/usr/local/bin/../lib/gcc/avr/4.1.1/../../../../avr/include/avr/version.h:
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/common.h:
+
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/version.h:
+
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h:
+
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h:
 
 tft-cpp/ascii.h:

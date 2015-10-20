@@ -34,7 +34,7 @@ int main(void)
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
-	uint8_t tv[] = "connected";
+	uint8_t tv[] = "hello nath";
 	sei();           //interrupts on
 	while(1)
 	{
