@@ -1,6 +1,6 @@
 #define CALLSIGN 'D'
 #define STOPBIT '#'
-#define MESSAGELENGTH 30
+#define MESSAGELENGTH 20
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -42,6 +42,10 @@ int main(void)
 	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
+	for (int i = 0; i < MESSAGELENGTH; i++)
+	{
+		tv[i]=(' ');
+	}
 	while(1)
 	{
 		if (rfm12_rx_status() == STATUS_COMPLETE)
@@ -83,11 +87,11 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NNathan it's Dom Maskell from the University of Southampton");
+						strcpy (tv,"NNathan it's Dom Maskell");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"SHi Sam it's Sam");
+						strcpy (tv,"SHi Sam it's Dom here");
 						count++;
 						break;
 					case 2:
