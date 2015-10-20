@@ -67,14 +67,15 @@ int main(void)
 				switch count
 				{
 					case 0:
-						tv[8] = 
+						strcpy (tv,"NHi Nath!#");
 						count++;
 						break;
 					case 1:
-
+						strcpy (tv,"SHi Sam!!#");
+						count++;
 						break;
 					case 2:
-
+						strcpy (tv,"HHuw haha#");
 						count = 0;
 						break;
 				}
