@@ -1,6 +1,6 @@
 #define CALLSIGN 'S'
 #define STOPBIT '#'
-#define MESSAGELENGTH 10
+#define MESSAGELENGTH 20
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -68,6 +68,7 @@ int main(void)
 			}
 			
 			//------------END NATHAN CODE------------//
+			puts("");
 
 				// tell the implementation that the buffer
 				// can be reused for the next data.
@@ -83,15 +84,15 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"NHiNath");
+						strcpy (tv,"NHiNathanR");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"DHiDom");
+						strcpy (tv,"DHiDominic");
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HHuw haha");
+						strcpy (tv,"HHHahahahah Huw");
 						count = 0;
 						break;
 				}
