@@ -77,21 +77,21 @@ int main(void)
 				
 				
 	
-					puts(".");
+					puts(" ");
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"DThis is an essay for Dominic Maskell");
+						strcpy (tv,"DA message to Dom from Nathan");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"SHi Sam it's Sam");
+						strcpy (tv,"SA message to Sam from Nathan");
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HHuw haha");
+						strcpy (tv,"HA message to Huw from Nathan");
 						count = 0;
 						break;
 				}
@@ -117,17 +117,17 @@ void init_sys(void)
 {
 	init();
 	tft::clean();
-	tft::zoom = 3;
+	tft::zoom = 1;
 	tft::background = COLOUR_565_888(0xFF0000);
 	tft::clean();
 	tft::foreground = COLOUR_565_888(0x00FF00);
-	puts(" *Welcome to use*");
+	/*puts(" *Welcome to use*");
 	puts("");
 	puts(" ***Group  O***");
 	puts(" **Smart Talk**");
 	tft::zoom = 1;
 	puts("supported by OOS(Oblivion OS) version 1.0.0");
-	puts("press any key to continue....");
+	puts("press any key to continue....");*/
 	
 }
 
