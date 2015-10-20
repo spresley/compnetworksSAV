@@ -42,7 +42,10 @@ int main(void)
 	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
-
+	for (int i = 0; i < MESSAGELENGTH; i++)
+	{
+		tv[i]=(' ');
+	}
 
 	while(1)
 	{
