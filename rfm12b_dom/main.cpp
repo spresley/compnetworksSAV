@@ -42,12 +42,13 @@ int main(void)
 	char tv[MESSAGELENGTH];
 	uint8_t count = 0;
 	sei();           //interrupts on
-	for (int i = 0; i < MESSAGELENGTH; i++)
-	{
-		tv[i]=(' ');
-	}
+	
 	while(1)
 	{
+		for (int i = 0; i < MESSAGELENGTH; i++)
+		{
+			tv[i]=(' ');
+		}
 		if (rfm12_rx_status() == STATUS_COMPLETE)
 		{
 			bufptr = rfm12_rx_buffer(); //get the address of the current rx buffer
