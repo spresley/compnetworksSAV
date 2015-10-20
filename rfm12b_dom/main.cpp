@@ -86,17 +86,14 @@ int main(void)
 				{
 					case 0:
 						strcpy (tv,"NHi Nath!#");
-						puts(tv);
 						count++;
 						break;
 					case 1:
 						strcpy (tv,"SHi Sam!!#");
-						puts(tv);
 						count++;
 						break;
 					case 2:
 						strcpy (tv,"HHuw haha#");
-						puts(tv);
 						count = 0;
 						break;
 				}
