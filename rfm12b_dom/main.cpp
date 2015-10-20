@@ -38,7 +38,7 @@ int main(void)
 	_delay_ms(100);  //little delay for the rfm12 to initialize properly
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
-	uint8_t tv[10] = "Connecting";
+	char tv[10];
 	uint8_t count = 0;
 	sei();           //interrupts on
 	while(1)
@@ -79,7 +79,7 @@ int main(void)
 					puts(".");
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
-				switch count
+				switch (count)
 				{
 					case 0:
 						strcpy (tv,"NHi Nath!#");
@@ -95,7 +95,7 @@ int main(void)
 						break;
 				}
 
-				rfm12_tx(sizeof(tv), 0, tv);	
+				rfm12_tx(sizeof(tv), 0, (uint8_t*)tv);	
 			//	}
 				//rfm12 needs to be called from your main loop periodically.
 				//it checks if the rf channel is free (no one else transmitting), and then
