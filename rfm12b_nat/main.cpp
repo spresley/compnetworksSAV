@@ -85,17 +85,17 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"DHi Dom!!#");
+						strcpy (tv,"DNat2Dom!#");
 						//puts(tv);
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"SHi Sam!!#");
+						strcpy (tv,"SNat2Sam!#");
 						//puts(tv);
 						count++;
 						break;
 					case 2:
-						strcpy (tv,"HHuw haha#");
+						strcpy (tv,"HNat2Huw!#");
 						//puts(tv);
 						count = 0;
 						break;
