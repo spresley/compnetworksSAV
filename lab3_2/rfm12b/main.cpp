@@ -10,7 +10,6 @@
 #include "tft.h"
 #include "rfm12.h"
 //#include "spi.h"
-
 #define NUM_MENU 6
 
 uint8_t *bufptr;
