@@ -1,6 +1,6 @@
 #define CALLSIGN 'A'
 #define STOPBIT '#'
-#define MESSAGELENGTH 20
+#define MESSAGELENGTH 30
 
 #include <avr/io.h>
 #include <stdio.h>
