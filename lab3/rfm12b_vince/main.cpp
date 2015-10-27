@@ -101,7 +101,7 @@ int main(void)
 						break;
 					case 1:
 						strcpy (tv,"AHi Antony, it's Vince");
-						count++;
+						count = 0;
 						break;
 			
 				}

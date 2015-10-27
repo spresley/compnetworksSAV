@@ -40,7 +40,6 @@ int main(void)
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
 	char tv[MESSAGELENGTH];
-	uint8_t count = 0;
 	sei();           //interrupts on
 	
 	while(1)
@@ -64,6 +63,7 @@ int main(void)
 			{
 				putchar(bufptr[i]);
 			}*/
+			
 			
 			//-----------BEGIN NATHAN CODE-------------//
 			//detect the callsign of the incoming packet
@@ -96,12 +96,12 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"VHi Vince, its Sam");
+						strcpy (tv,"VHi Vince,its Sam");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"AHi Ant, it's Sam");
-						count++;
+						strcpy (tv,"AHi Ant,its Sam");
+						count = 0;
 						break;
 			
 				}
