@@ -40,6 +40,7 @@ int main(void)
 	rfm12_init();    //init the RFM12
 	_delay_ms(100);
 	char tv[MESSAGELENGTH];
+	uint8_t count = 0;
 	sei();           //interrupts on
 	
 	while(1)
