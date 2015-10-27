@@ -78,16 +78,15 @@ int main(void)
 				}
 				puts("");
 			}
-			
 			//------------END NATHAN CODE------------//
-			
 
-				// tell the implementation that the buffer
-				// can be reused for the next data.
-				rfm12_rx_clear();
-				//_delay_ms(1000);
-			}
+            // tell the implementation that the buffer
+            // can be reused for the next data.
+            rfm12_rx_clear();
+            //_delay_ms(1000);
+        }
 				
+<<<<<<< HEAD
 				//	printf("%d", sizeof(tv));
 				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
 				switch (count)
@@ -122,6 +121,77 @@ int main(void)
 			}
 			_delay_ms(500);	//small delay so loop doesn't run as fast
 			
+||||||| merged common ancestors
+				//	printf("%d", sizeof(tv));
+				//	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
+				switch (count)
+				{
+					case 0:
+						strcpy (tv,"SHi Sam, it's Ant");
+						count++;
+						break;
+					case 1:
+						strcpy (tv,"VHi Vince, it's Ant");
+						count++;
+						break;
+			
+				}
+
+				for (int i = 1; i < MESSAGELENGTH - 1; i++)
+				{
+					tv[i]=tv[i] - 1;
+				}
+
+				tv[MESSAGELENGTH-1] = STOPBIT;
+
+				rfm12_tx(sizeof(tv), 0, (uint8_t*)tv);	
+			//	}
+				//rfm12 needs to be called from your main loop periodically.
+				//it checks if the rf channel is free (no one else transmitting), and then
+				//sends packets, that have been queued by rfm12_tx above.
+			for (uint8_t j = 0; j < 100; j++)	
+			{	
+				rfm12_tick();	
+				_delay_us(500); 
+			}
+			_delay_ms(500);	//small delay so loop doesn't run as fast
+			
+=======
+        //	printf("%d", sizeof(tv));
+        //	printf("02%x",rfm12_tx(sizeof(tv), 0, tv)));
+        
+        switch (count)
+        {
+            case 0:
+                strcpy (tv,"SHi Sam");
+                count++;
+                break;
+            case 1:
+                strcpy (tv,"VHi Vince");
+                count = 0;
+                break;
+        }
+        
+        for (int i = 1; i < MESSAGELENGTH - 1; i++)
+        {
+            tv[i]=tv[i] - 1;
+        }
+        
+        tv[MESSAGELENGTH-1] = STOPBIT;
+        rfm12_tx(sizeof(tv), 0, (uint8_t*)tv);
+        //	}
+        //rfm12 needs to be called from your main loop periodically.
+        //it checks if the rf channel is free (no one else transmitting), and then
+        //sends packets, that have been queued by rfm12_tx above.
+        
+        for (uint8_t j = 0; j < 100; j++)
+        {
+            rfm12_tick();
+            _delay_us(500);
+        }
+        
+        _delay_ms(500);	//small delay so loop doesn't run as fast
+>>>>>>> origin/master
 	}
 }
 
