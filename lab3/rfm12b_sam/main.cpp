@@ -1,6 +1,6 @@
 #define CALLSIGN 'S'
 #define STOPBIT '#'
-#define MESSAGELENGTH 20
+#define MESSAGELENGTH 30
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -137,7 +137,7 @@ void init_sys(void)
 	tft::clean();
 	tft::foreground = COLOUR_565_888(0x00FF00);
 	puts(" *Welcome to use*");
-	puts("");
+	puts("*SAM*");
 	puts(" ***Group  O***");
 	puts(" **Smart Talk**");
 	tft::zoom = 1;
