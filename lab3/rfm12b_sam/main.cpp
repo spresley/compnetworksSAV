@@ -1,6 +1,6 @@
 #define CALLSIGN 'S'
 #define STOPBIT '#'
-#define MESSAGELENGTH 30
+#define MESSAGELENGTH 20
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -96,11 +96,11 @@ int main(void)
 				switch (count)
 				{
 					case 0:
-						strcpy (tv,"VHi Vince, it's Sam");
+						strcpy (tv,"VHi Vince, its Sam");
 						count++;
 						break;
 					case 1:
-						strcpy (tv,"AHi Antony, it's Sam");
+						strcpy (tv,"AHi Ant, it's Sam");
 						count++;
 						break;
 			
